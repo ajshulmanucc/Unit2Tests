@@ -1,0 +1,41 @@
+
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+
+
+
+<button onclick="signIn()">Click to Sign-in</button>
+<script>
+		// Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBjR8D-JaVvi25xwHHjdvCODjKg1nE8OTY",
+    authDomain: "test-e8a93.firebaseapp.com",
+    databaseURL: "https://test-e8a93-default-rtdb.firebaseio.com",
+    projectId: "test-e8a93",
+    storageBucket: "test-e8a93.appspot.com",
+    messagingSenderId: "39253037069",
+    appId: "1:39253037069:web:6136bf02bb91cbd270c544"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+		function signIn() 
+				{
+					var user = firebase.auth().currentUser;
+					var provider = new firebase.auth.GoogleAuthProvider();
+					firebase.auth().signInWithPopup(provider).then((result) => {
+				    /** @type {firebase.auth.OAuthCredential} */
+				    var credential = result.credential;
+
+				    // This gives you a Google Access Token. You can use it to access the Google API.
+				    var token = credential.accessToken;
+				    // The signed-in user info.
+				    var user = result.user;
+				    // ...
+				    location.reload();
+
+				  });
+				  console.log('Success'); 
+				}
+
+</script>
